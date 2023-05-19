@@ -21,7 +21,7 @@ function ExpenseChart() {
         { x: "Incomes", y: totalIncomePercentage },
       ]}
       animate={{
-        duration: 2000,
+        duration: 1000,
       }}
       labels={({ datum }) => `${datum.y}%`}
       labelComponent={
