@@ -3,11 +3,13 @@ import { useGlobalState } from "../../context/GlobalState";
 export function TransactionItem({ transaction }) {
   const { deleteTransaction } = useGlobalState();
 
+  const formattedAmount = transaction.amount.toFixed(2);
+
   return (
     <li className="bg-zinc-600 text-white px-3 py-2 rounded-lg mb-2 w-full flex justify-between items-center">
       <p className="text-sm">{transaction.description}</p>
       <div className="flex">
-        <span>${transaction.amount}</span>
+        <span>${formattedAmount}</span>
         <button
           onClick={() => {
             deleteTransaction(transaction.id);
