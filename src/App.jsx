@@ -11,8 +11,8 @@ import ExpenseChart from './components/ExpenseChart';
 function App() {
   return (
     <GlobalProvider>
-      <div className='bg-zinc-950 text-white h-full flex justify-center items-center'>
-        <div className='container m-auto md:w-full max-w-screen-xl mx-8 my-8'>
+      <div className='bg-zinc-950 text-white min-h-screen flex flex-col justify-center items-center px-4 py-4 md:px-8 md:py-8'>
+        <div className='container m-auto md:w-full max-w-screen-xl'>
           <div className='bg-zinc-800 p-10 rounded-lg flex flex-col md:flex-row gap-x-8'>
             <div>
               <h1 className='text-4xl font-bold'>Expense Tracker</h1>
@@ -31,4 +31,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
