@@ -12,8 +12,8 @@ function ExpenseChart() {
       .filter((transaction) => transaction.amount < 0)
       .reduce((acc, transaction) => (acc += transaction.amount), 0) * -1;
 
-  const totalExpensesPorcentage = totalIncome!== 0 ? Math.round(
-    (totalExpenses / totalIncome) * 100) :100;
+  const totalExpensesPorcentage =
+    totalIncome !== 0 ? Math.round((totalExpenses / totalIncome) * 100) : 100;
 
   const totalIncomePercentage = 100 - totalExpensesPorcentage;
 
@@ -21,15 +21,17 @@ function ExpenseChart() {
 
   if (!showChart) {
     return (
-      <>
-        <p className='text-center'>No hay datos disponibles para mostrar el gráfico.</p>
+      <div className="max-w-md mx-auto mb-8">
+        <p className="text-center">
+          No hay datos disponibles para mostrar el gráfico.
+        </p>
         <VictoryPie
           colorScale={["#52525b"]}
           data={[{ x: "No Data", y: 100 }]}
           animate={{
             duration: 1000,
           }}
-          labels={({datum}) => `${datum.y}%`}
+          labels={({ datum }) => `${datum.y}%`}
           labelComponent={
             <VictoryLabel
               angle={45}
@@ -39,30 +41,34 @@ function ExpenseChart() {
             />
           }
         />
-      </>
-    )
+      </div>
+    );
   }
 
   return (
-    <VictoryPie
-      colorScale={totalExpenses < 0 ? ["#e74c3c", "#52525b"] : ["#e74c3c", "#2ecc71"]}
-      data={[
-        { x: "Expenses", y: totalExpensesPorcentage },
-        { x: "Incomes", y: totalIncomePercentage },
-      ]}
-      animate={{
-        duration: 1000,
-      }}
-      labels={({ datum }) => `${datum.y}%`}
-      labelComponent={
-        <VictoryLabel
-          angle={45}
-          style={{
-            fill: "white",
-          }}
-        />
-      }
-    />
+    <div className="max-w-md mx-auto mb-8">
+      <VictoryPie
+        colorScale={
+          totalExpenses < 0 ? ["#e74c3c", "#52525b"] : ["#e74c3c", "#2ecc71"]
+        }
+        data={[
+          { x: "Expenses", y: totalExpensesPorcentage },
+          { x: "Incomes", y: totalIncomePercentage },
+        ]}
+        animate={{
+          duration: 1000,
+        }}
+        labels={({ datum }) => `${datum.y}%`}
+        labelComponent={
+          <VictoryLabel
+            angle={45}
+            style={{
+              fill: "white",
+            }}
+          />
+        }
+      />
+    </div>
   );
 }
 
